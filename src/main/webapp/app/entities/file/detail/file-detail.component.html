@@ -1,0 +1,47 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="file">
+      <h2 data-cy="fileDetailsHeading"><span jhiTranslate="dockerComposeDemoApp.file.detail.title">File</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ file.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="dockerComposeDemoApp.file.fileName">File Name</span></dt>
+        <dd>
+          <span>{{ file.fileName }}</span>
+        </dd>
+        <dt><span jhiTranslate="dockerComposeDemoApp.file.fileContent">File Content</span></dt>
+        <dd>
+          <div *ngIf="file.fileContent">
+            <a (click)="openFile(file.fileContent, file.fileContentContentType)" jhiTranslate="entity.action.open">Open</a>
+            {{ file.fileContentContentType }}, {{ byteSize(file.fileContent) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="dockerComposeDemoApp.file.fileSize">File Size</span></dt>
+        <dd>
+          <span>{{ file.fileSize }}</span>
+        </dd>
+        <dt><span jhiTranslate="dockerComposeDemoApp.file.fileMimeType">File Mime Type</span></dt>
+        <dd>
+          <span>{{ file.fileMimeType }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/file', file.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
