@@ -1,0 +1,17 @@
+
+
+
+
+
+
+
+
+
+entity File{
+    fileName String,
+    fileContent Blob,
+    fileSize Long,
+	fileMimeType String
+}
+
+
